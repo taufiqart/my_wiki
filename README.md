@@ -8,17 +8,17 @@ proxy_ssl_ciphers DEFAULT;
 ## mengatasi ddos attack
 https://www.youtube.com/watch?v=oSTXOsE3vv8
 
-## reset iptables
+### reset iptables
 iptables -F
 
-## stop paket kosong
+### stop paket kosong
 iptables -A INPUT -p tcp --tcp-flags ALL NONE -j DROP
 
-## stop syn-flood attack
+### stop syn-flood attack
 iptables -A INPUT -p tcp ! --syn -m state --state NEW -j DROP
 
-## set rules port 80
+### set rules port 80
 iptables -I INPUT -p tcp --dport 80 -m state --state NEW -m recent --set
 
-## cegah permintaan lebih dari 10 request baru ke server dalam periode waktu 20 detik angka 10 dan 20 dapat diganti sesuai keiinginan dan kemampuan server kalian.
+### cegah permintaan lebih dari 10 request baru ke server dalam periode waktu 20 detik angka 10 dan 20 dapat diganti sesuai keiinginan dan kemampuan server kalian.
 iptables -I INPUT -p tcp --dport 80 -m state --state NEW -m recent --update --seconds 20 --hitcount 10 -j DROP
