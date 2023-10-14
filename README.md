@@ -25,3 +25,14 @@ iptables -I INPUT -p tcp --dport 80 -m state --state NEW -m recent --update --se
 
 ## mount smb to local linux
 sudo mount -t cifs -o credentials=~/.credentials //172.1.1.1/backupdata /mnt/movies_share
+
+### credentials file
+username=target_user_name
+
+password=target_user_password
+
+domain=domain
+
+sudo chown <User Name>:<Credentials Filename>
+
+sudo chmod 600 <Credentials Filename>
