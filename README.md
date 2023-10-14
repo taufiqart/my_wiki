@@ -22,3 +22,6 @@ iptables -I INPUT -p tcp --dport 80 -m state --state NEW -m recent --set
 
 ### cegah permintaan lebih dari 10 request baru ke server dalam periode waktu 20 detik angka 10 dan 20 dapat diganti sesuai keiinginan dan kemampuan server kalian.
 iptables -I INPUT -p tcp --dport 80 -m state --state NEW -m recent --update --seconds 20 --hitcount 10 -j DROP
+
+## mount smb to local linux
+sudo mount -t cifs -o credentials=~/.credentials //172.1.1.1/backupdata /mnt/movies_share
